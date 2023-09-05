@@ -1,0 +1,114 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="WpfApp32.MainWindow"
+        Title="MainWindow" Width="1080" Height="1080">
+    <Grid x:Name="Helme">
+        <Border Grid.Column="0" Background="Aqua" Margin="0,0,10,0"/>
+        <Menu>
+            <MenuItem Header="File" Height="26" RenderTransformOrigin="1.033,0.482" Background="#FF90FF33">
+                <MenuItem Header="New" Click="New_Click"/>
+                <MenuItem Header="New Tab" Click="NewTab_Click"/>
+                <MenuItem Header="Close Tab" Click="CloseTab_Click"/>
+                <MenuItem Header="Close All Tabs" Click="CloseAllTabs_Click"/>
+                <MenuItem Header="Close" Click="Close_Click"/>
+                <MenuItem Header="Open" Click="Open_Click"/>
+                <MenuItem Header="New Page" Click="NewPage_Click"/>
+                <MenuItem Header="New Window" Click="NewWindow_Click"/>
+                <MenuItem Header="Save" Click="Save_Click"/>
+                <MenuItem Header="Save As PDF" Click="SaveAsPdf_Click"/>
+                <MenuItem Header="Save As Word" Click="SaveAsWord_Click"/>
+                <MenuItem Header="Save As Image" Click="SaveAsImage_Click"/>
+                <MenuItem Header="Exit" Click="Exit_Click"/>
+            </MenuItem>
+            <!-- Add more font colors as needed -->
+            <MenuItem Header="Edit" Height="26" RenderTransformOrigin="1.033,0.482" Background="#FFFF5E5E">
+                <MenuItem Header="Undo" Click="Undo_Click"/>
+                <MenuItem Header="Redo" Click="Redo_Click"/>
+                <MenuItem Header="Cut" Click="Cut_Click"/>
+                <MenuItem Header="Copy" Click="Copy_Click"/>
+                <MenuItem Header="Paste" Click="Paste_Click"/>
+                <MenuItem Header="Delete" Click="Delete_Click"/>
+                <MenuItem Header="Select All" Click="SelectAll_Click"/>
+            </MenuItem>
+            <MenuItem Header="Style" Height="26" RenderTransformOrigin="1.033,0.482" Background="#FF6DFFFA">
+                <MenuItem Header="Bold" Click="Bold_Click"/>
+                <MenuItem Header="Italic" Click="Italic_Click"/>
+                <MenuItem Header="Background Image" Click="BackgroundImage_Click"/>
+            </MenuItem>
+            <MenuItem Header="Insert" Height="26" RenderTransformOrigin="1.033,0.482" Background="#FF5926FF">
+                <MenuItem Header="Insert Image" Click="InsertImage_Click"/>
+                <MenuItem Header="Insert Hyperlink" Click="InsertHyperlink_Click"/>
+            </MenuItem>
+            <MenuItem Header="Layout" Height="26" RenderTransformOrigin="1.033,0.482">
+                <MenuItem Header="Letter" Click="Letter_Click"/>
+                <MenuItem Header="Legal" Click="Legal_Click"/>
+                <MenuItem Header="Tabloid" Click="Tabloid_Click"/>
+                <MenuItem Header="Thesis" Click="Thesis_Click"/>
+                <MenuItem Header="Ledger" Click="Ledger_Click"/>
+                <MenuItem Header="A0" Click="A0_Click"/>
+                <MenuItem Header="A1" Click="A1_Click"/>
+                <MenuItem Header="A2" Click="A2_Click"/>
+                <MenuItem Header="A3" Click="A3_Click"/>
+                <MenuItem Header="A4" Click="A4_Click"/>
+                <MenuItem Header="A5" Click="A5_Click"/>
+                <MenuItem Header="A6" Click="A6_Click"/>
+                <MenuItem Header="A7" Click="A7_Click"/>
+                <MenuItem Header="A8" Click="A8_Click"/>
+                <MenuItem Header="A9" Click="A9_Click"/>
+                <MenuItem Header="A10" Click="A10_Click"/>
+            </MenuItem>
+            <MenuItem Header="Tool" Background="Aqua" Height="26">
+                <Button x:Name="startRecordingButton" Content="Mulai Rekaman" Click="StartRecordingButton_Click" Width="120" Margin="10"/>
+                <Button x:Name="stopRecordingButton" Content="Hentikan Rekaman" Click="StopRecordingButton_Click" Width="120" Margin="10" IsEnabled="False"/>
+            </MenuItem>
+            <Slider x:Name="slider" Minimum="0" Maximum="360" ValueChanged="Slider_ValueChanged" Width="60" Foreground="#FF00FFD0"/>
+            <Slider x:Name="fontSizeSlider" Minimum="15" Maximum="72" ValueChanged="FontSizeSlider_ValueChanged" Width="60" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10"/>
+            <Slider x:Name="lineSpacingSlider" Minimum="1" Maximum="2" ValueChanged="LineSpacingSlider_ValueChanged" Width="60" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10"/>
+            <Slider x:Name="redSlider" Minimum="0" Maximum="255" ValueChanged="ColorSlider_ValueChanged" Width="60" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" Background="Red" Foreground="Red" BorderBrush="Red"/>
+            <Slider x:Name="greenSlider" Minimum="0" Maximum="255" ValueChanged="ColorSlider_ValueChanged" Width="60" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="#FF0DFF00"/>
+            <Slider x:Name="blueSlider" Minimum="0" Maximum="255" ValueChanged="ColorSlider_ValueChanged" Width="60" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Background="#FF0012FF"/>
+            <Slider x:Name="layoutSizeSlider" Minimum="0" Maximum="2" ValueChanged="LayoutSizeSlider_ValueChanged" Width="60" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10"/>
+            <Slider x:Name="PageSlider" Minimum="0" Maximum="100" ValueChanged="PageSlider_ValueChanged" Width="60" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10"/>
+        </Menu>
+        <TabControl x:Name="tabControl" Margin="0,74,0,0" BorderBrush="#FFFFABAB">
+            <TabControl.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF485BFF"/>
+                    <GradientStop Color="#FFFA5757" Offset="1"/>
+                </LinearGradientBrush>
+            </TabControl.Background>
+            <TabItem Header="New Tab">
+                <Grid Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <!-- RichTextBox -->
+                    <RichTextBox x:Name="richTextEditor" Grid.Row="1" Margin="20" BorderBrush="Transparent" Background="LightYellow" Foreground="Black" VerticalScrollBarVisibility="Auto" Width="600" Height="800" Cursor="Pen" SelectionBrush="#FF00FFE7" FontFamily="Arial" ToolBar.OverflowMode="Always">
+                        <RichTextBox.Resources>
+                            <Style TargetType="Paragraph">
+                                <Setter Property="Margin" Value="0" />
+                                <Setter Property="Padding" Value="5" />
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="LineHeight" Value="5" />
+                            </Style>
+                        </RichTextBox.Resources>
+                        <FlowDocument>
+                            <Paragraph>
+                                <Span FontSize="18">
+                                    <Run Text="Judul" FontWeight="Bold" />
+                                </Span>
+                            </Paragraph>
+                            <Paragraph>
+                                <Span FontStyle="Normal" FontSize="10">
+                                    <Run Text="Teks Anda di sini..." />
+                                </Span>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
